@@ -1,6 +1,9 @@
 import type { Todo } from '../types/todo';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+// Use same origin if VITE_API_URL is not set (for production with Firebase Functions)
+const API_BASE_URL = import.meta.env.VITE_API_URL || (
+  typeof window !== 'undefined' ? window.location.origin : 'http://localhost:3001'
+);
 
 interface CreateTodoRequest {
   text: string;
