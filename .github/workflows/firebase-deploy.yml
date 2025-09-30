@@ -4,10 +4,15 @@ on:
   push:
     branches:
       - main
-  pull_request:
+  pull_request_target:
     branches:
       - main
   workflow_dispatch:
+
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
 
 jobs:
   test:
@@ -59,7 +64,7 @@ jobs:
           path: dist
 
   deploy-preview:
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request_target'
     needs: build
     runs-on: ubuntu-latest
     steps:
