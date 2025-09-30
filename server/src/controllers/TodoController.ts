@@ -12,7 +12,7 @@ export class TodoController {
     try {
       const todos = this.repository.findAll();
       res.json(todos);
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Internal server error' });
     }
   };
@@ -28,7 +28,7 @@ export class TodoController {
       }
 
       res.json(todo);
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Internal server error' });
     }
   };
@@ -44,7 +44,7 @@ export class TodoController {
 
       const todo = this.repository.create({ text: text.trim() });
       res.status(201).json(todo);
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Internal server error' });
     }
   };
@@ -76,7 +76,7 @@ export class TodoController {
       }
 
       res.json(todo);
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Internal server error' });
     }
   };
@@ -92,7 +92,7 @@ export class TodoController {
       }
 
       res.status(204).send();
-    } catch (error) {
+    } catch {
       res.status(500).json({ error: 'Internal server error' });
     }
   };

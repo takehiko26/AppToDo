@@ -25,8 +25,8 @@ describe('TodoRepository', () => {
     });
 
     it('should return all todos', () => {
-      const todo1 = repository.create({ text: 'Todo 1' });
-      const todo2 = repository.create({ text: 'Todo 2' });
+      repository.create({ text: 'Todo 1' });
+      repository.create({ text: 'Todo 2' });
 
       const todos = repository.findAll();
       expect(todos).toHaveLength(2);
