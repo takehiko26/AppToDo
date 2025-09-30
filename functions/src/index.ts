@@ -29,7 +29,7 @@ app.get('/api/todos', async (_req, res) => {
       ...doc.data()
     }));
     res.json(todos);
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -46,7 +46,7 @@ app.get('/api/todos/:id', async (req, res) => {
     }
 
     res.json({ id: doc.id, ...doc.data() });
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -71,7 +71,7 @@ app.post('/api/todos', async (req, res) => {
     const doc = await docRef.get();
 
     res.status(201).json({ id: doc.id, ...doc.data() });
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -108,7 +108,7 @@ app.put('/api/todos/:id', async (req, res) => {
     const updated = await docRef.get();
 
     res.json({ id: updated.id, ...updated.data() });
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
@@ -127,7 +127,7 @@ app.delete('/api/todos/:id', async (req, res) => {
 
     await docRef.delete();
     res.status(204).send();
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
